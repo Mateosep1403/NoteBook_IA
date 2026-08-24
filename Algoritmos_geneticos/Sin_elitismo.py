@@ -162,13 +162,13 @@ best_no_elite, history_no_elite = genetic_algorithm(
 
 
 
-print("===== CON ELITISMO =====")
+print(" CON ELITISMO ")
 print("Mejor individuo:", as_string(best_elite))
 print("Fitness final:", fitness(best_elite), "/", len(best_elite))
 print("Generaciones:", history_elite[-1]["generation"])
 
 
-print("\n===== SIN ELITISMO =====")
+print("\n SIN ELITISMO ")
 print("Mejor individuo:", as_string(best_no_elite))
 print("Fitness final:", fitness(best_no_elite), "/", len(best_no_elite))
 print("Generaciones:", history_no_elite[-1]["generation"])
