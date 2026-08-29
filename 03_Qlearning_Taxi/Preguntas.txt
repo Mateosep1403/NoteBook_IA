@@ -1,0 +1,58 @@
+ 1. ¿Cuántos estados y cuántas acciones tiene Taxi-v4? Explique brevemente por qué Taxi tiene muchos más estados que FrozenLake.
+    Taxi-v4 tiene 500 estados, 6 acciones y Tiene muchos más estados que FrozenLake porque cada estado de Taxi representa más información, como la posición del taxi, la ubicación del pasajero y el destino del pasajero. Además Taxi tiene acciones para moverse, recoger al pasajero y dejarlo.
+
+2. Identificar que representa cada elemento st, at, rt+1, st+1.
+# st es state y representa el estado actual del taxi antes de realizar la acción.
+# at es action y representa la acción que realiza el taxi.
+# rt+1 es reward y representa la recompensa obtenida después de realizar la acción.
+# st+1 es next_state y representa el nuevo estado al que llega el taxi después de ejecutar la acción.
+
+3. ¿Cuántos valores debe aprender el agente en total? Calcular ∣S∣×∣A∣
+    ∣S∣×∣A∣ = 500 x 6 = 3000
+    El agente debe aprender 3000 valores en total
+
+4. 
+# ¿La recompensa promedio mejora?
+    La recompensa promedio mejora durante el entrenamiento, lo que indica que el agente va aprendiendo una política cada vez más adecuada.
+
+# ¿Después de aproximadamente cuántos episodios comienza a estabilizarse?
+    Luego de varios episodios, aunque puede presentar algunas variaciones debido a la exploración y a la naturaleza aleatoria del ambiente.
+
+# ¿El comportamiento observado indica convergencia perfecta o solamente una política razonablemente buena?
+    Podemos ver que el agente aprende una política razonablemente buena, pero no necesariamente una convergencia perfecta.
+
+5.
+# ¿Qué diferencias observa en el comportamiento del taxi?
+    El taxi sin entrenar se mueve de forma prácticamente aleatoria, repitiendo o alternando acciones sin un objetivo claro y El taxi entrenado se mueve de manera directa hacia el pasajero, lo recoge y luego va directo hacia el destino sin movimientos de más.
+
+# ¿El taxi sin entrenamiento logra completar la tarea?
+    No, Con max_steps=50 acaba todos los pasos disponibles sin terminar el episodio y termina con recompensa total de −203, lo que indica que nunca llegó a recoger y entregar correctamente al pasajero.
+
+# ¿El agente entrenado evita acciones innecesarias?
+    Sí, completa todo el episodio en solo 11 pasos, muy por debajo del límite de 200, lo que muestra una ruta casi óptima sin movimientos de más ni intentos fallidos de recoger o dejar al pasajero.
+
+# ¿Qué evidencia visual le permite afirmar que el agente aprendió?
+    Visualmente en la animación se ve al taxi ir directo hacia el pasajero, recogerlo y llevarlo al destino sin vueltas innecesarias.
+6.
+#¿Cuál es la acción con mayor valor Q?
+    La acción 3 con 𝑄 = 3.95
+
+# ¿Qué significa que una acción tenga un valor Q mayor que otra?
+    Significa que según lo que el agente aprendió, tomar esa acción y luego seguir la política óptima produce una mayor recompensa acumulada esperada a futuro que tomar la otra acción.
+
+# ¿Por qué no podemos interpretar Q(s,a) únicamente como la recompensa inmediata de ejecutar la acción?
+    Porque la regla de actualización de Q incluye el término  γ max a′ ​Q(s′,a′) que suma el valor esperado de todas las recompensas futuras descontadas, no solo la recompensa del paso actual.
+
+7.
+# velocidad de aprendizaje
+    La curva sube más lento con 𝜖 = 0.3
+
+
+# estabilidad
+    Ambas curvas terminan aplanándose (se estabilizan), pero la de ϵ = 0.3 lo hace en un nivel mucho más bajo.
+
+# recompensa final
+    Bajó notablemente: de +2.5 a −14.6 con ϵ = 0.3
+
+# comportamiento observado
+    La acción óptima aprendida para el estado 123 sigue siendo la misma acción 3, lo que sugiere que la política de fondo que se está aprendiendo es similar. El efecto negativo de subir ϵ se refleja sobre todo en el rendimiento durante el entrenamiento , no necesariamente en la calidad final de la Q-table si se dejara correr con más episodios.
